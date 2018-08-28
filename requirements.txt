@@ -1,0 +1,4 @@
+astral
+paho-mqtt
+bottle
+
