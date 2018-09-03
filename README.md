@@ -7,7 +7,7 @@ I have only ported this into a dockerfile, All Original code (with one minor mod
 You can run this with the following:
 
 ```
-docker run --name py-eagle-mqtt -d -e "MQTT_BROKER_IP=" -e "MQTT_BROKER_PORT=" evanrich/py-eagle/mqtt
+docker run --name py-eagle-mqtt -d -e "MQTT_BROKER_IP=" -e "MQTT_BROKER_PORT=" evanrich/py-eagle-mqtt
 ```
 **MQTT_BROKER_IP** = your broker's IP address.  Defaults to 192.168.1.20 (my local k8s node)
 
