@@ -6,6 +6,12 @@ I have only ported this into a dockerfile, All Original code (with one minor mod
 
 Original Readme as follows from creator, Ted Drain.  You can view the original repo this is based on here: https://github.com/TD22057/T-Home
 
+snippet from my MQTT Broker showing container connecting and dissconnecting when I start/stop it:
+```
+{"pid":1,"hostname":"mqtt-867c776494-6rc57","name":"mosca","level":30,"time":1535955884767,"msg":"client connected","client":"","v":1}
+{"pid":1,"hostname":"mqtt-867c776494-6rc57","name":"mosca","level":30,"time":1535955905640,"msg":"closed","client":"","v":1}
+```
+
 T-Home Automation Software
 ==========================
 
