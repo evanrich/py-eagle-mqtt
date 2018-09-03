@@ -6,6 +6,21 @@ I have only ported this into a dockerfile, All Original code (with one minor mod
 
 Original Readme as follows from creator, Ted Drain.  You can view the original repo this is based on here: https://github.com/TD22057/T-Home
 
+You can run this with the following:
+
+```
+docker run --name py-eagle-mqtt -d -e "MQTT_BROKER_IP=" -e "MQTT_BROKER_PORT=" evanrich/py-eagle/mqtt
+```
+MQTT_BROKER_IP = your broker's IP address.  Defaults to 192.168.1.20 (my local k8s node)
+MQTT_BROKER_PORT = your broker's port #.  Defaults to 1883 (used in my k8s)
+
+Optionally, you can add the following:
+
+"KEEPALVE="  Sets the keepalive for MQTT, defaults to 60 seconds if not specificed
+"MQTT_USER=" Sets the MQTT user, if using authentication.  Defaults to "None".  Don't specify if not using authentication.
+"MQTT_PASS=" Sets the MQTT pasword if using authentication.  Defaults to "None".  Don't specify if not using authentication.
+
+
 snippet from my MQTT Broker showing container connecting and dissconnecting when I start/stop it:
 ```
 {"pid":1,"hostname":"mqtt-867c776494-6rc57","name":"mosca","level":30,"time":1535955884767,"msg":"client connected","client":"","v":1}

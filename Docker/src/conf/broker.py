@@ -5,20 +5,20 @@ import os
 # for regular and 8883 for SSL.
 #
 #===========================================================================
-host = os.getenv('MQTT_BROKER_IP', '192.168.1.18')
-port = os.getenv('MQTT_BROKER_PORT', 31333)
+host = os.getenv('MQTT_BROKER_IP', '192.168.1.20')
+port = os.getenv('MQTT_BROKER_PORT', 1883)
 
 # Keep alive time in seconds.  Client sends a ping if no other message
 # is sent in this interval.
-keepAlive = 60
+keepAlive = os.getenv('KEEPALIVE', 60)
 
 #===========================================================================
 #
 # User name and password (strings) for broker log in.
 #
 #===========================================================================
-user = None
-password = None
+user = os.getenv('MQTT_USER', None)
+password = os.getenv('MQTT_PASS', None)
 
 #===========================================================================
 #
