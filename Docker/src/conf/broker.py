@@ -1,11 +1,12 @@
+import os
 #===========================================================================
 #
 # MQTT message broker location.  Default broker location is port 1883
 # for regular and 8883 for SSL.
 #
 #===========================================================================
-host = '192.168.1.20'
-port = 31333
+host = os.getenv('MQTT_BROKER_IP', '192.168.1.18')
+port = os.getenv('MQTT_BROKER_PORT', 31333)
 
 # Keep alive time in seconds.  Client sends a ping if no other message
 # is sent in this interval.
