@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: py-eagle-mqtt
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: py-eagle-mqtt
+    spec:
+      containers:
+      - name: py-eagle-mqtt
+        image: evanrich/py-eagle-mqtt:latest
+        env:
+        - name: MQTT_BROKER_IP
+          value: '192.168.1.20'
+        - name: MQTT_BROKER_PORT
+          value: '31333'
+        ports:
+        - name: py-eagle
+          containerPort: 22042
+        readinessProbe:
+          tcpSocket:
+            port: py-eagle
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: py-eagle
+          initialDelaySeconds: 15
+          periodSeconds: 20

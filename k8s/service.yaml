@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: py-eagle
+  name: py-eagle-mqtt
+  labels:
+    app: py-eagle-mqtt
 spec:
   selector:
-    app: py-eagle
+    app: py-eagle-mqtt
+  type: NodePort
   ports:
   - name: py-eagle
     port: 22042
-    targetPort: py-eagle
+    nodePort: 31242
