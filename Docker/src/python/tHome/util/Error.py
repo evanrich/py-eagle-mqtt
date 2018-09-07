@@ -24,7 +24,7 @@ class Error ( Exception ):
 
       exception.add( msg )
       
-      raise exception, None, trace
+      raise exception.with_traceback(trace)
 
    #-----------------------------------------------------------------------
    @staticmethod
@@ -34,7 +34,7 @@ class Error ( Exception ):
       newError = Error( str( exception ) )
       newError.add( msg )
       
-      raise newError, None, trace
+      raise newError.with_traceback(trace)
       
    #-----------------------------------------------------------------------
    def __init__( self, msg ):

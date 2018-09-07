@@ -21,7 +21,7 @@ def fimport( filePath ):
    # Create a new module and exec the code in it's context.  
    m = imp.new_module( rootName )
    m.__file__ = absPath
-   exec code in m.__dict__
+   exec(code, m.__dict__)
 
    # Return the module object.
    return m
