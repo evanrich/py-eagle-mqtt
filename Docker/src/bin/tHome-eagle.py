@@ -17,9 +17,9 @@ messages.
 """
 
 import argparse
-import bottle as B
 import sys
 import json
+import bottle as B
 import tHome as T
 
 #===========================================================================
