@@ -11,7 +11,7 @@ class Data:
       
    #--------------------------------------------------------------------------
    def keys( self ):
-      return self.__dict__.keys()
+      return list(self.__dict__.keys())
    
    #--------------------------------------------------------------------------
    def update( self, rhs ):
@@ -43,7 +43,7 @@ class Data:
    def _formatValue( self, value, out, indent ):
       if isinstance( value, Data ):
          out.write( "%s(\n" % self.__class__.__name__ )
-         for k, v in sorted( value.__dict__.iteritems() ):
+         for k, v in sorted( value.__dict__.items() ):
             if k[0] == "_":
                continue
             
@@ -56,7 +56,7 @@ class Data:
          
       elif isinstance( value, dict ):
          out.write( "{\n" )
-         for k, v in sorted( value.iteritems() ):
+         for k, v in sorted( value.items() ):
             if k[0] == "_":
                continue
             
