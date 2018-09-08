@@ -33,7 +33,7 @@ def loads( text ):
 #=============================================================================
 def _toStr( data, ignoreDicts=False ):
    # Convert unicode to string.
-   if isinstance( data, unicode ):
+   if isinstance( data, str ):
       return data.encode( 'utf-8' )
    
    # For lists, process each item.
@@ -45,7 +45,7 @@ def _toStr( data, ignoreDicts=False ):
    if isinstance( data, dict ) and not ignoreDicts:
       return {
          _toStr( k, ignoreDicts=True ) : _toStr( v, ignoreDicts=True )
-         for k, v in data.iteritems()
+         for k, v in data.items()
          }
 
    # Otherwise return the original object.

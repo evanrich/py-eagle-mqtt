@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #===========================================================================
 #
@@ -42,6 +42,15 @@ def instant( client, data, cfg ):
    return ( cfg.mqttPower, msg )
    
 #===========================================================================
+def price( client,data, cfg ):
+   msg = {
+      "time" : data.TimeUnix,
+      "price" : data.Price
+      "tier" : data.Tier
+      }
+   return ( cfg.mqttPrice, msg )
+
+#===========================================================================
 handlers = {
    #"BlockPriceDetail" : 
    "CurrentSummation" : meter,
@@ -51,7 +60,7 @@ handlers = {
    #"MessageCluster" : 
    #"MeterInfo" : 
    #"NetworkInfo" : 
-   #"PriceCluster" : 
+   "PriceCluster" : price,
    #"Reading" : 
    #"ScheduleInfo" :
    #"TimeCluster" : 
