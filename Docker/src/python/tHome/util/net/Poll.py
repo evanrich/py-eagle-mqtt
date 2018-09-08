@@ -138,7 +138,7 @@ class Poll:
       # themselves.  So make a copy of the dict value list list
       # containing all the objects so we're not modifying the client
       # dictionary as we loop over it.
-      clients = self.clients.values()[:]
+      clients = list(self.clients.values())[:]
       for c in clients:
          c.close()
 
@@ -169,7 +169,7 @@ class Poll:
             # Returns tuple (fileDescriptor, bitFlag) of the files
             # that can act.
             events = self.poll.poll( timeOut_msec )
-         except select.error, v:
+         except select.error as v:
             # Not sure why, but sometimes with a timeout value, you can
             # get an "interrupted system call" error thrown.  Web
             # searches indicate this isn't really an error and should be
