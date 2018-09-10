@@ -51,7 +51,7 @@ handlers = {
    #"MessageCluster" : 
    #"MeterInfo" : 
    #"NetworkInfo" : 
-   #"PriceCluster" : 
+   "PriceCluster" : 
    #"Reading" : 
    #"ScheduleInfo" :
    #"TimeCluster" : 
