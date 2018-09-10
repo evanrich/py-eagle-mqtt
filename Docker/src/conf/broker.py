@@ -6,7 +6,7 @@ import os
 #
 #===========================================================================
 host = os.getenv('MQTT_BROKER_IP', '192.168.1.20')
-port = os.getenv('MQTT_BROKER_PORT', 31333)
+port = os.getenv('MQTT_BROKER_PORT', 1883)
 
 # Keep alive time in seconds.  Client sends a ping if no other message
 # is sent in this interval.
