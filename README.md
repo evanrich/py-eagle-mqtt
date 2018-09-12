@@ -20,7 +20,6 @@ docker create \
   -p 22042:22042 \
   evanrich/py-eagle-mqtt
 ```
-
 &nbsp;
 
 ## Parameters
