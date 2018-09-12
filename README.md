@@ -6,26 +6,39 @@ I have only ported this into a dockerfile, All Original code (with one minor mod
 ## UPDATES:
 2018-09-10: Ported to Python3, Added pricing info.  Merged into master branch
 
-## How to use:
-You can run this with the following:
+
+## Usage
 
 ```
-docker run --name py-eagle-mqtt -d -e "MQTT_BROKER_IP=" -e "MQTT_BROKER_PORT=" evanrich/py-eagle-mqtt
+docker create \ 
+  --name=py-eagle-mqtt \
+  -e MQTT_BROKER_IP=<broker ip address> \
+  -e MQTT_BROKER_PORT=<broker port number> \
+  -e KEEPALIVE=<keepalive time in seconds> \
+  -e MQTT_USER=<username>
+  -e MQTT_PASSWORD=<password>
+  -p 22042:22042 \
+  evanrich/py-eagle-mqtt
 ```
 
-## Environment variables (settings)
+&nbsp;
 
-**MQTT_BROKER_IP** = your broker's IP address.  Defaults to 192.168.1.20 (my local k8s node)
+## Parameters
 
-**MQTT_BROKER_PORT** = your broker's port #.  Defaults to 1883 (used in my k8s)
 
-Optionally, you can add the following:
+| Parameter | Function |
+| :---: | --- |
+| `-e MQTT_BROKER_IP` | The IP address of your MQTT Broker |
+| `-e MQTT_BROKER_PORT` | The PORT your MQTT Broker listens on. Defaults to 1883 if not specified |
 
-**KEEPALVE**  Sets the keepalive for MQTT, defaults to 60 seconds if not specificed
+## Optional Parameters 
+| Parameter | Function |
+| :---: | --- |
+| `-e KEEPALIVE` | Keepalive time in seconds. Defaults to 60 seconds if not specified |
+| `-e MQTT_USER` | The User Name for your MQTT Broker if you use one. Defaults to None if not specified |
+| `-e MQTT_PASSWORD` | The Password for your MQTT Broker if you use one. Defaults to None if not specified |
 
-**MQTT_USER** Sets the MQTT user, if using authentication.  Defaults to "None".  Don't specify if not using authentication.
-
-**MQTT_PASS** Sets the MQTT pasword if using authentication.  Defaults to "None".  Don't specify if not using authentication.
+&nbsp;
 
 
 snippet from my MQTT Broker showing container connecting and dissconnecting when I start/stop it:
