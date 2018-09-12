@@ -25,7 +25,6 @@ docker create \
 
 ## Parameters
 
-
 | Parameter | Function |
 | :---: | --- |
 | `-e MQTT_BROKER_IP` | The IP address of your MQTT Broker |
