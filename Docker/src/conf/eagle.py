@@ -29,5 +29,5 @@ mqttRateLabel = 'power/elec/Home/ratelabel'
 #
 #===========================================================================
 logFile = '/var/log/tHome/eagle.log'
-logLevel = 40
+logLevel = 20
 

@@ -1,7 +1,7 @@
-FROM python:3.7.0-alpine3.8
+FROM python:3.7.2-alpine3.8
 
 LABEL maintainer="Evan Richardson"
-LABEL version="1.1"
+LABEL version="1.2"
 
 WORKDIR /app
 COPY . /app
