@@ -1,0 +1,9 @@
+/var/log/tHome/*.log {
+   weekly
+   size 5M
+   missingok
+   rotate 8
+   compress
+   delaycompress
+   create 644 root root
+}

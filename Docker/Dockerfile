@@ -1,13 +1,15 @@
 FROM python:3.7.2-alpine3.8
 
 LABEL maintainer="Evan Richardson"
-LABEL version="1.2"
+LABEL version="1.3"
 
 WORKDIR /app
 COPY . /app
+COPY ./src/conf/logrotate/tHome /etc/logrotate.d/
 ENV PYTHONPATH=/app/src/python
-RUN pip3 install --no-cache-dir  --upgrade pip
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN apk --update add --no-cache logrotate \
+&& pip3 install --no-cache-dir  --upgrade pip \
+&& pip3 install --no-cache-dir -r requirements.txt
 #RUN rm -rf /var/cache/apk
 
 CMD ["/app/src/bin/tHome-eagle.py", "-c", "/app/src/conf"]
