@@ -4,8 +4,12 @@ Python3 based Docker for Eagle to MQTT reader
 I have only ported this into a dockerfile, All Original code (with one minor modification for XML root tag) is credit to [Ted Drain - TD22057](https://github.com/TD22057/T-Home).
 
 ## UPDATES:
+2019-04-12: Rebase to python 3.7.3-alpine3.9
+
 2019-03-08: Rebase to python 3.7.2-alpine3.9, update bottle and astral versions to latest
+
 2019-01-03: Rebase to python 3.7.2-alpine3.8, changed logging level to Info (should output to /var/log/tHome/eagle.log)
+
 2018-09-10: Ported to Python3, Added pricing info.  Merged into master branch
 
 
