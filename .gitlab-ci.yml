@@ -23,7 +23,3 @@ build:
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   except:
     - master
-<<<<<<< HEAD
-
-=======
->>>>>>> c80658da6110e2c9095cdbd249c5583509c16a7a
