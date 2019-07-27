@@ -19,8 +19,6 @@ build:
   script:
     - docker build -t $IMAGE_TAG ./Docker/
     - docker push $IMAGE_TAG
-  only:
-    - master
 
 #build:
 #  stage: build
