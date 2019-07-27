@@ -20,8 +20,6 @@ before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
 build:
-  services:
-   - docker:18.09-dind
   stage: build
   script:
     - docker build -t $IMAGE_TAG ./Docker/
