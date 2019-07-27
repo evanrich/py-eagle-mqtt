@@ -1,6 +1,6 @@
 # This file is a template, and might need editing before it works on your project.
 # Official docker image.
-image: docker:stable
+image: docker:latest
 
 services:
   - docker:dind
@@ -9,11 +9,13 @@ stages:
   - build
 
 variables:
-  DOCKER_DRIVER: overlay2
+  #DOCKER_DRIVER: overlay2
   #IMAGE_TAG: erichardson/py-eagle-mqtt:$CI_COMMIT_TAG
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
 
 before_script:
+  - docker version
+  - docker info
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
 build:
