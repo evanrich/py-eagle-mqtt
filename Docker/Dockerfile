@@ -1,4 +1,4 @@
-FROM python:apline
+FROM python:alpine
 
 LABEL maintainer="Evan Richardson (evanrich81[at]gmail.com)"
 LABEL version="1.6.1"
