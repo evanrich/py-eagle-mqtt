@@ -5,6 +5,8 @@ I have only ported this into a dockerfile, All Original code (with one minor mod
 
 ## UPDATES:
 
+2020-03-23: Just wanted to say, I hope everyone is hanging in there with the #coronavirus pandemic going on.  This project is still maintained, but I haven't had a lot of free time to work on it lately.  Now that I'm permanently working from home (until the virus goes away), I'll try and dedicate more time to updating this!  Thanks for your support, and stay safe!
+
 2020-01-02: Rebase to python:alpine (currently 3.8.1-alpine3.11) to make future builds easier)
 
 2019-12-11: Rebase to python 3.8.0-alpine3.10, update bottle to 0.12.18 and paho-mqtt to 1.5.0
