@@ -2,7 +2,9 @@ stages:
   - build
 
 before_script:
+  - docker version
   - docker info
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
 build:
   stage: build
@@ -12,8 +14,9 @@ build:
   variables:
     DOCKER_DRIVER: overlay
     DOCKER_HOST: tcp://localhost:2375/
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker build -t $IMAGE_TAG -t $CI_COMMIT_TAG ./Docker/
+    - docker push $IMAGE_TAG $CI_COMMIT_TAG
