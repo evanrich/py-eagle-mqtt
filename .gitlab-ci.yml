@@ -1,9 +1,9 @@
 # This file is a template, and might need editing before it works on your project.
 docker-build-master:
   # Official docker image.
-  image: docker:18.09-dind
+  image: docker:18.09.7-dind
   services:
-    - docker:18.09-dind
+    - docker:18.09.7-dind
   
   variables:
     DOCKER_HOST: tcp://localhost:2375
