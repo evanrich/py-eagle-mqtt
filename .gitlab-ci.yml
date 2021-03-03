@@ -8,9 +8,9 @@ before_script:
 
 build:
   stage: build
-  image: docker:18.09.7-dind
+  image: docker:latest
   services:
-    - docker:18.09.7-dind
+    - docker:latest
   variables:
     DOCKER_DRIVER: overlay
     DOCKER_HOST: tcp://localhost:2375/
