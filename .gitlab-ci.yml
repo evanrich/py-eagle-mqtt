@@ -9,7 +9,8 @@ variables:
 
 stages:
   - build
-  - push
+  - push_local
+  - push_dockerhub
 
 before_script:
   - docker version
@@ -38,8 +39,8 @@ build:
     #- docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" ./Docker/
     #- docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
 
-push:
-  stage: push
+push local:
+  stage: push_local
   variables:
     GIT_STRATEGY: none
   only:
@@ -48,3 +49,18 @@ push:
     - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE:latest
     - docker push $CI_REGISTRY_IMAGE:latest
+
+push dockerhub:
+  stage: push_dockerhub
+  variables:
+    GIT_STRATEGY: none
+    CI_DOCKERHUB_IMAGE: "hub.docker.com/repository/docker/evanrich/py-eagle-mqtt"
+    CI_DOCKERHUB_REGISTRY: "hub.docker.com"
+  before_script:
+    - docker login -u "$CI_DOCKERHUB_USER" -p "$CI_DOCKERHUB_PASSWORD" $CI_DOCKERHUB_REGISTRY
+  only:
+    - master
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_DOCKERHUB_IMAGE:latest
+    - docker push $CI_DOCKERHUB_IMAGE:latest
