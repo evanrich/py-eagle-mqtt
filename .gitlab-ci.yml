@@ -15,6 +15,7 @@ build:
     DOCKER_DRIVER: overlay
     DOCKER_HOST: tcp://localhost:2375/
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    FF_GITLAB_REGISTRY_HELPER_IMAGE: 1
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
