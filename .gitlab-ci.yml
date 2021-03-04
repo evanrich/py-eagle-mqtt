@@ -55,7 +55,7 @@ push dockerhub:
   variables:
     GIT_STRATEGY: none
     CI_DOCKERHUB_IMAGE: "index.docker.io/evanrich/py-eagle-mqtt"
-    CI_DOCKERHUB_REGISTRY: "index.docker.io"
+    CI_DOCKERHUB_REGISTRY: "docker.io"
   only:
     - master
   script:
