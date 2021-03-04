@@ -18,7 +18,7 @@ keepAlive = os.getenv('KEEPALIVE', 60)
 #
 #===========================================================================
 user = os.getenv('MQTT_USER', None)
-password = os.getenv('MQTT_PASS', None)
+password = os.getenv('MQTT_PASSWORD', None)
 
 #===========================================================================
 #
@@ -31,5 +31,3 @@ ca_certs = [
 
 certFile = None
 keyFile = None
-
-
