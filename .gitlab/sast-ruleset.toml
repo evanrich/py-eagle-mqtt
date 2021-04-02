@@ -1,0 +1,6 @@
+[bandit]
+  [[bandit.ruleset]]
+    disable = true
+    [bandit.ruleset.identifier]
+      type = "bandit_test_id"
+      value = "B101"
