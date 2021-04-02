@@ -11,10 +11,10 @@ variables:
   IMAGE_TAG: "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
   FF_GITLAB_REGISTRY_HELPER_IMAGE: 1
 stages:
+- test
 - build
 - push_local
 - push_dockerhub
-- test
 before_script:
 - docker version
 - docker info
