@@ -3,7 +3,7 @@
 # Parse XML messages into an object.
 #
 #===========================================================================
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET
 from . import messages
 
 #==========================================================================
