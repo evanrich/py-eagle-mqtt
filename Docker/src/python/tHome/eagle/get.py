@@ -6,7 +6,7 @@ from . import messages as msg
 #from .InstantDemand import InstantDemand
 #from .Reading import Reading
 #from .Total import Total
-import xml.etree.ElementTree as ET
+import defusedxml.ElementTree as ET
 import socket
 
 #==========================================================================
