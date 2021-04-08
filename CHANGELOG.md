@@ -1,3 +1,10 @@
+## [1.7.1](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/compare/v1.7.0...v1.7.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* refactor Dockerfile to improve build ([40ac8c5](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/commit/40ac8c5ada9b993f53b72dcc14b2d9b7cd183e2f))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
