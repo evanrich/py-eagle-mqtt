@@ -2,45 +2,39 @@
 # See https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
 # Note that environment variables can be set in several places
 # See https://docs.gitlab.com/ee/ci/variables/#priority-of-environment-variables
-
 stages:
 - test
 - build
 - push_local
 - release
 - push_dockerhub
-
-.docker_base:
+".docker_base":
   image: docker:18.09.7-dind
   services:
-    - docker:18.09.7-dind
+  - docker:18.09.7-dind
   variables:
     DOCKER_DRIVER: overlay
     DOCKER_HOST: tcp://localhost:2375/
     IMAGE_TAG: "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     FF_GITLAB_REGISTRY_HELPER_IMAGE: 1
   before_script:
-    - docker version
-    - docker info
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-
+  - docker version
+  - docker info
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 build:
   extends:
-    - .docker_base
+  - ".docker_base"
   stage: build
   script:
   - docker pull $CI_REGISTRY_IMAGE:latest || true
-  - >
-    docker build
-    --pull
-    --cache-from $CI_REGISTRY_IMAGE:latest
-    --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  - 'docker build --pull --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     ./Docker/
-  - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 
+'
+  - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 push local:
   extends:
-    - .docker_base
+  - ".docker_base"
   stage: push_local
   variables:
     GIT_STRATEGY: none
@@ -50,10 +44,9 @@ push local:
   - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE:latest
   - docker push $CI_REGISTRY_IMAGE:latest
-
 push dockerhub:
   extends:
-    - .docker_base
+  - ".docker_base"
   stage: push_dockerhub
   variables:
     GIT_STRATEGY: none
@@ -63,11 +56,10 @@ push dockerhub:
   - tags
   script:
   - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-  - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_DOCKERHUB_IMAGE:$CI_COMMIT_REF_NAME 
+  - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_DOCKERHUB_IMAGE:$CI_COMMIT_REF_NAME
   - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_DOCKERHUB_IMAGE:latest
   - docker login -u "$CI_DOCKERHUB_USER" -p "$CI_DOCKERHUB_PASSWORD" $CI_DOCKERHUB_REGISTRY
   - docker push $CI_DOCKERHUB_IMAGE
-
 release:
   image: node:13
   stage: release
@@ -75,18 +67,15 @@ release:
     refs:
     - master
     - alpha
-    # This matches maintenance branches
-    - /^(([0-9]+)\.)?([0-9]+)\.x/
-    # This matches pre-releases
-    - /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/ 
+    - "/^(([0-9]+)\\.)?([0-9]+)\\.x/"
+    - "/^([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+[0-9A-Za-z-]+)?$/"
   script:
-    - touch CHANGELOG.md
-    - npm install @semantic-release/gitlab @semantic-release/changelog
-    - npx semantic-release
+  - touch CHANGELOG.md
+  - npm install @semantic-release/gitlab @semantic-release/changelog
+  - npx semantic-release
   artifacts:
     paths:
     - CHANGELOG.md
-
 sast:
   stage: test
 include:
