@@ -5,6 +5,7 @@ plugins:
     - changelogFile: CHANGELOG.md
   - "@semantic-release/gitlab"
   - "@semantic-release/git"
+    - assets: CHANGELOG.md
 branches:
   - "master"
   - "+([0-9])?(.{+([0-9]),x}).x"
