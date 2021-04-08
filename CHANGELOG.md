@@ -1,3 +1,11 @@
+## [1.7.2](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/compare/v1.7.1...v1.7.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* Cleanup CHANGELOG.md since using new semantic-release format ([a72ac7a](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/commit/a72ac7a1df91cb2231e38e8bbceb5ccf9c93328a))
+* fix asset info for git commit ([00c95c4](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/commit/00c95c42ea98921a1b2da9d2069d41e8e32f34f5))
+
 ## [1.7.1](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/compare/v1.7.0...v1.7.1) (2021-04-08)
 
 
