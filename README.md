@@ -10,6 +10,8 @@ This project utilizes the following tools:
 
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/evanrich/py-eagle-mqtt)
 
+![Gitlab pipeline status (self-hosted)](https://img.shields.io/gitlab/pipeline/erichardson/py-eagle-mqtt/master?gitlab_url=https%3A%2F%2Fgitlab.evanrichardsonphotography.com)
+
 ## UPDATES:
 
 2020-04-06: Moved Updates to a CHANGELOG.md file to clean this up.
