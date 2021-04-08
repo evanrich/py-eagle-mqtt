@@ -1,7 +1,7 @@
-FROM python:3.9.3-alpine3.12
+FROM python:3.9.4-alpine3.13
 
 LABEL maintainer="Evan Richardson (evanrich81[at]gmail.com)"
-LABEL version="1.6.6"
+#LABEL version="1.7.0"
 
 WORKDIR /app
 COPY . /app
@@ -10,7 +10,6 @@ ENV PYTHONPATH=/app/src/python
 RUN apk --update add --no-cache logrotate \
 && pip3 install --no-cache-dir  --upgrade pip \
 && pip3 install --no-cache-dir -r requirements.txt
-#RUN rm -rf /var/cache/apk
 
 CMD ["/app/src/bin/tHome-eagle.py", "-c", "/app/src/conf"]
 
