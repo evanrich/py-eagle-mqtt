@@ -35,6 +35,8 @@ build:
     --pull
     --cache-from $CI_REGISTRY_IMAGE:latest
     --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+    --build-arg VCS_REF=$CI_COMMIT_SHORT_SHA
     ./Docker/
   - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 
