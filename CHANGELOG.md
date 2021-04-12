@@ -1,3 +1,10 @@
+## [1.7.3](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/compare/v1.7.2...v1.7.3) (2021-04-12)
+
+
+### Bug Fixes
+
+* Empty commit to get recent changes into build (last commit should've been labeled this) ([e513752](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/commit/e513752c46cc0b3beb93530f6549661d67196905))
+
 ## [1.7.2](https://gitlab.evanrichardsonphotography.com/erichardson/py-eagle-mqtt/compare/v1.7.1...v1.7.2) (2021-04-08)
 
 
